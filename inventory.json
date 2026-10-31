@@ -1,0 +1,15 @@
+{
+  "address_tag": "Home",
+  "items": [
+    {
+      "name": "Milk",
+      "preferred_query": "Amul Taaza Toned Milk 500ml",
+      "quantity": 2
+    },
+    {
+      "name": "Eggs",
+      "preferred_query": "Eggoz White Eggs 6 pack",
+      "quantity": 1
+    }
+  ]
+}
