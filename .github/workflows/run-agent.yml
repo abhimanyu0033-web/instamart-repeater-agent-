@@ -1,7 +1,16 @@
 name: Run Instamart Repeater Agent
 
 on:
-  workflow_dispatch: # Allows manual one-tap trigger from phone
+  workflow_dispatch:
+    inputs:
+      auth_code:
+        description: 'Swiggy Auth Code (from localhost redirect URL)'
+        required: false
+        default: ''
+      code_verifier:
+        description: 'PKCE Code Verifier (from previous log)'
+        required: false
+        default: ''
 
 jobs:
   run-agent:
@@ -20,5 +29,9 @@ jobs:
           pip install mcp httpx
 
       - name: Run Repeater Agent
+        env:
+          SWIGGY_TOKEN: ${{ secrets.SWIGGY_TOKEN }}
+          AUTH_CODE: ${{ github.event.inputs.auth_code }}
+          CODE_VERIFIER: ${{ github.event.inputs.code_verifier }}
         run: |
           python agent.py
